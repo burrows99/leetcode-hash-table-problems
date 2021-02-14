@@ -1,0 +1,20 @@
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        def f(string):
+            n=len(string)
+            d={}
+            for i in range(n):
+                if(string[i] not in d):
+                    d[string[i]]=[i]
+                else:
+                    d[string[i]].append(i)
+            return(d)
+        def check(jewels,stones):
+            Jewels=f(jewels)
+            Stones=f(stones)
+            ans=0
+            for i in stones:
+                if(i in Jewels):
+                    ans=ans+1
+            return(ans)
+        return(check(jewels,stones))
